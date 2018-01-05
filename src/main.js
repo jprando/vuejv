@@ -7,6 +7,6 @@ Vue.config.productionTip = false
 new Vue({
   name: 'WebApp',
   el: '#app',
-  template: '<App />',
+  template: '<div> <App /> </div>',
   components: { App }
 })
