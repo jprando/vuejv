@@ -1,22 +1,24 @@
 <template>
   <div id="app">
 
-    <div class="row">
-      <jv-cell :class="{ganhou: ganhouClass11}" v-model="pos11" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass12}" v-model="pos12" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass13}" v-model="pos13" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-    </div>
+    <div class="board">
+      <div class="row">
+        <jv-cell :class="{ganhou: ganhouClass11}" v-model="pos11" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass12}" v-model="pos12" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass13}" v-model="pos13" @jogar="jogar" ></jv-cell>
+      </div>
 
-    <div class="row">
-      <jv-cell :class="{ganhou: ganhouClass21}"  v-model="pos21" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass22}"  v-model="pos22" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass23}"  v-model="pos23" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-    </div>
+      <div class="row">
+        <jv-cell :class="{ganhou: ganhouClass21}"  v-model="pos21" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass22}"  v-model="pos22" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass23}"  v-model="pos23" @jogar="jogar" ></jv-cell>
+      </div>
 
-    <div class="row">
-      <jv-cell :class="{ganhou: ganhouClass31}" v-model="pos31" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass32}" v-model="pos32" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
-      <jv-cell :class="{ganhou: ganhouClass33}" v-model="pos33" @jogar="jogar" :disabled="ganhouGeral?'disabled':null"></jv-cell>
+      <div class="row">
+        <jv-cell :class="{ganhou: ganhouClass31}" v-model="pos31" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass32}" v-model="pos32" @jogar="jogar" ></jv-cell>
+        <jv-cell :class="{ganhou: ganhouClass33}" v-model="pos33" @jogar="jogar" ></jv-cell>
+      </div>
     </div>
 
     <div class="actionBar">
@@ -29,6 +31,7 @@
         </h1>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -37,21 +40,19 @@ import jvCell from './components/jvCell'
 
 export default {
   name: 'app',
-  components: {
-    jvCell
-  },
+  components: { jvCell },
   data () {
     return {
       vezDe: 'X',
-      pos11: {pos: '11', exibir: null},
-      pos12: {pos: '12', exibir: null},
-      pos13: {pos: '13', exibir: null},
-      pos21: {pos: '21', exibir: null},
-      pos22: {pos: '22', exibir: null},
-      pos23: {pos: '23', exibir: null},
-      pos31: {pos: '31', exibir: null},
-      pos32: {pos: '32', exibir: null},
-      pos33: {pos: '33', exibir: null}
+      pos11: { pos: '11', exibir: null },
+      pos12: { pos: '12', exibir: null },
+      pos13: { pos: '13', exibir: null },
+      pos21: { pos: '21', exibir: null },
+      pos22: { pos: '22', exibir: null },
+      pos23: { pos: '23', exibir: null },
+      pos31: { pos: '31', exibir: null },
+      pos32: { pos: '32', exibir: null },
+      pos33: { pos: '33', exibir: null }
     }
   },
   computed: {
@@ -68,9 +69,7 @@ export default {
         this.ganhou01, this.ganhou02, this.ganhou03,
         this.ganhou04, this.ganhou05, this.ganhou06,
         this.ganhou07, this.ganhou08
-      ].reduce((p, e) => {
-        return p + e ? 1 : 0
-      }, 0) === 1
+      ].reduce((p, e) => p + e ? 1 : 0, 0) === 1
       if (simGanhou) this.vezDe = this.vezDe === 'X' ? 'O' : 'X'
       return simGanhou
     },
@@ -87,9 +86,11 @@ export default {
   methods: {
     jogar (pos) {
       let vezDeJogar = this.vezDe
-      this.vezDe = vezDeJogar === 'X' ? 'O' : 'X'
-      this['pos' + pos].exibir = vezDeJogar
-      // console.log('jogar', vezDeJogar, pos)
+      let ninguemGanhou = !this.ganhouGeral
+      if (ninguemGanhou) {
+        this.vezDe = vezDeJogar === 'X' ? 'O' : 'X'
+        this['pos' + pos].exibir = vezDeJogar
+      }
     },
     ganhou (posicoes) {
       const result = posicoes.map((i) => i.exibir)
@@ -106,6 +107,7 @@ export default {
 </script>
 
 <style>
+h1{ margin-bottom: 0px; }
 #app{
   font-family: Courier New, Courier, monospace;
   float: left;
