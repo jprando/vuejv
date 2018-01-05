@@ -26,15 +26,15 @@ export default {
     return {
       vezDe: 'X',
       posicoes: {
-        pos11: { pos: '11', exibir: null, ganhou: false },
-        pos12: { pos: '12', exibir: null, ganhou: false },
-        pos13: { pos: '13', exibir: null, ganhou: false },
-        pos21: { pos: '21', exibir: null, ganhou: false },
-        pos22: { pos: '22', exibir: null, ganhou: false },
-        pos23: { pos: '23', exibir: null, ganhou: false },
-        pos31: { pos: '31', exibir: null, ganhou: false },
-        pos32: { pos: '32', exibir: null, ganhou: false },
-        pos33: { pos: '33', exibir: null, ganhou: false }
+        pos11: { exibir: null, ganhou: false },
+        pos12: { exibir: null, ganhou: false },
+        pos13: { exibir: null, ganhou: false },
+        pos21: { exibir: null, ganhou: false },
+        pos22: { exibir: null, ganhou: false },
+        pos23: { exibir: null, ganhou: false },
+        pos31: { exibir: null, ganhou: false },
+        pos32: { exibir: null, ganhou: false },
+        pos33: { exibir: null, ganhou: false }
       }
     }
   },
