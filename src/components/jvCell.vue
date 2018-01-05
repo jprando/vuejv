@@ -1,31 +1,28 @@
 <template>
-  <button class="cell" :disabled="enableBtn" @click="jogar">{{ value }}</button>
+  <button
+    class="cell"
+    :disabled="jaJogou"
+    @click="jogar"> {{ value.exibir }}
+  </button>
 </template>
 
 <script>
 export default {
   name: 'jvCell',
-  props: [ 'vezde' ],
-  data () {
-    return {
-      value: null
-    }
-  },
+  props: [ 'value' ],
   computed: {
-    enableBtn () { return this.value != null }
+    jaJogou () { return this.value.exibir != null }
   },
   methods: {
     jogar () {
-      let vezDeJogar = this.vezde
-      this.value = vezDeJogar
-      this.$emit('jogar')
+      this.$emit('jogar', this.value.pos)
     }
   }
 }
 </script>
 
 <style>
-.cell{
+.cell {
   cursor: pointer;
   float: left;
   border: solid 1px black;
@@ -35,7 +32,13 @@ export default {
   line-height: 100px;
   font-size: 60px
 }
-.cell:hover{
+.cell:hover {
   background-color: #fee;
+}
+.ganhou {
+  background-color: #aaffaa;
+}
+.ganhou:hover {
+  background-color: #aaffaa;
 }
 </style>
