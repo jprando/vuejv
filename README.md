@@ -1,21 +1,12 @@
-# jogadavelha
+# VueJs + Jogo da Velha
+Jogo da Velha implementado em VueJs
 
-> A Vue.js project
+**VueJV** - **Vue**Js **J**ogo da **V**elha
 
-## Build Setup
+tambem conhecido como tic-tac-toe
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+TODO List
+- Player 1 x Player 2 : OK
+- Player x CPU
+- CPU x CPU
+- Muitas Instancias de CPU x CPU
