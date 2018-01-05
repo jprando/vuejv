@@ -1,79 +1,68 @@
 <template>
   <div id="app">
-
-    <div class="board">
-      <div class="row">
-        <jv-cell v-model="pos11" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos12" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos13" @jogar="jogarPartida" ></jv-cell>
-      </div>
-
-      <div class="row">
-        <jv-cell v-model="pos21" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos22" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos23" @jogar="jogarPartida" ></jv-cell>
-      </div>
-
-      <div class="row">
-        <jv-cell v-model="pos31" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos32" @jogar="jogarPartida" ></jv-cell>
-        <jv-cell v-model="pos33" @jogar="jogarPartida" ></jv-cell>
-      </div>
-    </div>
-
-    <div class="actionBar">
+    <jv-board v-model="posicoes" @jogar="jogarPartida"></jv-board>
+    <div class="options">
       <button class="reset" @click="reiniciar">reiniciar</button>
       <div>
         <h1>
           JOGADOR
           {{ vezDe }}
-          <h1 v-show="ganhouGeral">GANHOU</h1>
+          <h1 v-show="alguemGanhou">GANHOU</h1>
         </h1>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import jvCell from './components/jvCell'
+import jvBoard from './components/jvBoard'
 
 const allEqual = arr => arr.every(v => v === arr[0])
 
 export default {
   name: 'app',
-  components: { jvCell },
+  components: { jvBoard },
   data () {
     return {
       vezDe: 'X',
-      pos11: { pos: '11', exibir: null, ganhou: false },
-      pos12: { pos: '12', exibir: null, ganhou: false },
-      pos13: { pos: '13', exibir: null, ganhou: false },
-      pos21: { pos: '21', exibir: null, ganhou: false },
-      pos22: { pos: '22', exibir: null, ganhou: false },
-      pos23: { pos: '23', exibir: null, ganhou: false },
-      pos31: { pos: '31', exibir: null, ganhou: false },
-      pos32: { pos: '32', exibir: null, ganhou: false },
-      pos33: { pos: '33', exibir: null, ganhou: false }
+      posicoes: {
+        pos11: { pos: '11', exibir: null, ganhou: false },
+        pos12: { pos: '12', exibir: null, ganhou: false },
+        pos13: { pos: '13', exibir: null, ganhou: false },
+        pos21: { pos: '21', exibir: null, ganhou: false },
+        pos22: { pos: '22', exibir: null, ganhou: false },
+        pos23: { pos: '23', exibir: null, ganhou: false },
+        pos31: { pos: '31', exibir: null, ganhou: false },
+        pos32: { pos: '32', exibir: null, ganhou: false },
+        pos33: { pos: '33', exibir: null, ganhou: false }
+      }
     }
   },
   computed: {
-    // TODO gostaria de ter uma funcao que atenda a regra do jogo no lugar desse mapeamento
-    ganhou01 () { return this.ganhou([this.pos11, this.pos12, this.pos13]) },
-    ganhou02 () { return this.ganhou([this.pos21, this.pos22, this.pos23]) },
-    ganhou03 () { return this.ganhou([this.pos31, this.pos32, this.pos33]) },
-    ganhou04 () { return this.ganhou([this.pos11, this.pos21, this.pos31]) },
-    ganhou05 () { return this.ganhou([this.pos12, this.pos22, this.pos32]) },
-    ganhou06 () { return this.ganhou([this.pos13, this.pos23, this.pos33]) },
-    ganhou07 () { return this.ganhou([this.pos11, this.pos22, this.pos33]) },
-    ganhou08 () { return this.ganhou([this.pos13, this.pos22, this.pos31]) },
+    // TODO gostaria que nao existisse esse mapeamento
+    linha1 () { return [this.posicoes.pos11, this.posicoes.pos12, this.posicoes.pos13] },
+    linha2 () { return [this.posicoes.pos21, this.posicoes.pos22, this.posicoes.pos23] },
+    linha3 () { return [this.posicoes.pos31, this.posicoes.pos32, this.posicoes.pos33] },
+    coluna1 () { return [this.posicoes.pos11, this.posicoes.pos21, this.posicoes.pos31] },
+    coluna2 () { return [this.posicoes.pos12, this.posicoes.pos22, this.posicoes.pos32] },
+    coluna3 () { return [this.posicoes.pos13, this.posicoes.pos23, this.posicoes.pos33] },
+    vertical1 () { return [this.posicoes.pos11, this.posicoes.pos22, this.posicoes.pos33] },
+    vertical2 () { return [this.posicoes.pos13, this.posicoes.pos22, this.posicoes.pos31] },
+    ganhouLinha1 () { return this.ganhou(this.linha1) },
+    ganhouLinha2 () { return this.ganhou(this.linha2) },
+    ganhouLinha3 () { return this.ganhou(this.linha3) },
+    ganhouColuna1 () { return this.ganhou(this.coluna1) },
+    ganhouColuna2 () { return this.ganhou(this.coluna2) },
+    ganhouColuna3 () { return this.ganhou(this.coluna3) },
+    ganhouVertical1 () { return this.ganhou(this.vertical1) },
+    ganhouVertical2 () { return this.ganhou(this.vertical2) },
     alguemGanhou () {
-      let simGanhou = [
-        this.ganhou01, this.ganhou02, this.ganhou03,
-        this.ganhou04, this.ganhou05, this.ganhou06,
-        this.ganhou07, this.ganhou08
-      ].reduce((p, e) => p + (e ? 1 : 0), 0) >= 1
-      return simGanhou
+      let haGanhadores = [
+        this.ganhouLinha1, this.ganhouLinha2, this.ganhouLinha3,
+        this.ganhouColuna1, this.ganhouColuna2, this.ganhouColuna3,
+        this.ganhouVertical1, this.ganhouVertical2
+      ].reduce((p, seGanhou) => p + (seGanhou ? 1 : 0), 0) >= 1
+      return haGanhadores
     }
   },
   methods: {
@@ -81,7 +70,7 @@ export default {
       let vezDeJogar = this.vezDe
       let ninguemGanhou = !this.alguemGanhou
       if (ninguemGanhou) {
-        this['pos' + pos].exibir = vezDeJogar
+        pos.exibir = vezDeJogar
         if (!this.alguemGanhou) {
           this.vezDe = vezDeJogar === 'X' ? 'O' : 'X' /// ajuste
         }
@@ -90,9 +79,7 @@ export default {
     ganhou (posicoes) {
       const marcados = posicoes.map((i) => i.exibir)
       let haUmganhador = marcados[0] && allEqual(marcados)
-      posicoes.forEach(i => {
-        i.ganhou = i.ganhou || haUmganhador
-      })
+      posicoes.forEach(i => { i.ganhou = i.ganhou || haUmganhador })
       return haUmganhador
     },
     reiniciar () {
@@ -100,8 +87,8 @@ export default {
         'pos21', 'pos22', 'pos23',
         'pos31', 'pos32', 'pos33' ]
       .forEach((pos) => {
-        this[pos].exibir = null
-        this[pos].ganhou = false
+        this.posicoes[pos].exibir = null
+        this.posicoes[pos].ganhou = false
       })
     }
   }
@@ -132,7 +119,7 @@ h1{ margin-bottom: 0px; margin-top:0px}
 .row{
   clear: left;
 }
-.actionBar{
+.options{
   clear: left;
   padding-top: 30px;
   padding-bottom: 30px;

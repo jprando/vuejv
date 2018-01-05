@@ -1,7 +1,7 @@
 <template>
   <button class="cell"
     :class="{ganhou:value.ganhou}"
-    :disabled="desabilitar"
+    :disabled="this.value.exibir != null? 'disabled' :null"
     @click="jogar"> {{ value.exibir }}
   </button>
 </template>
@@ -10,16 +10,8 @@
 export default {
   name: 'jvCell',
   props: [ 'value' ],
-  computed: {
-    desabilitar () {
-      let jaJogou = this.value.exibir != null
-      return jaJogou ? 'disabled' : null
-    }
-  },
   methods: {
-    jogar () {
-      this.$emit('jogar', this.value.pos)
-    }
+    jogar () { this.$emit('jogar') }
   }
 }
 </script>
