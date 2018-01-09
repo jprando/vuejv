@@ -1,0 +1,28 @@
+{
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "jshint.enable": false,
+    "eslint.enable": true,
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "vue"
+    ],
+    // "eslint.options": {
+    //     "rules": {
+    //         "space-before-function-paren": [
+    //             "error",
+    //             "never"
+    //         ]
+    //     }
+    // },
+    // "eslint.autoFixOnSave": true,
+    "editor.formatOnSave": true,
+    // "vueStyle.formatOnSave": true,
+    // "vetur.format.defaultFormatter.js": "prettier",
+    "prettier.eslintIntegration": true,
+    "prettier.semi": false,
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "none",
+    "prettier.jsxBracketSameLine": true
+}
