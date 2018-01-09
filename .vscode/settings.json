@@ -24,5 +24,6 @@
     "prettier.semi": false,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "none",
-    "prettier.jsxBracketSameLine": true
+    "prettier.jsxBracketSameLine": true,
+    // "prettier.bracketSpacing": false
 }
