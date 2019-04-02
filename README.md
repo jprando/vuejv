@@ -1,5 +1,5 @@
 # vuejv
-![vuejv cmpile status](https://circleci.com/gh/jprando/vuejv.svg?style=svg)
+[![CircleCI](https://circleci.com/gh/jprando/vuejv.svg?style=svg)](https://circleci.com/gh/jprando/vuejv)
 
 ## Project setup
 ```
