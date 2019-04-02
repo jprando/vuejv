@@ -18,7 +18,7 @@
 import jvBoard from '@/components/jvBoard'
 import ganhador from '@/services/ganhador'
 export default {
-  name: "jv",
+  name: 'jv',
   components: { jvBoard },
   data () {
     return {
