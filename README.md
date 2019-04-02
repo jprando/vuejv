@@ -1,5 +1,5 @@
 # vuejv
-[![CircleCI](https://circleci.com/gh/jprando/vuejv.svg?style=svg)](https://circleci.com/gh/jprando/vuejv)
+[![CircleCI](https://circleci.com/gh/jprando/vuejv.svg?style=svg)](https://circleci.com/gh/jprando/vuejv/tree/master)
 
 ## Project setup
 ```
