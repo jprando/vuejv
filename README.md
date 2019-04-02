@@ -1,4 +1,5 @@
 # vuejv
+![vuejv cmpile status](https://circleci.com/gh/jprando/vuejv.svg?style=svg)
 
 ## Project setup
 ```
