@@ -73,16 +73,12 @@ export default {
   },
   methods: {
     jogarPartida (pos) {
-      // eslint-disable-next-line
-      console.log('jogar partida')
       let vezDeJogar = this.vezDe
       let ninguemGanhou = !this.alguemGanhou
       if (ninguemGanhou) {
         let self = this
         pos.exibir = vezDeJogar
         const result = ganhador(self.jogada)
-        // eslint-disable-next-line
-        console.log(result && `${result} ganhou` || 'ninguem ganhou')
         self.alguemGanhou = result == vezDeJogar
         ninguemGanhou = !self.alguemGanhou
         if (ninguemGanhou) {
@@ -91,10 +87,6 @@ export default {
       }
     },
     reiniciar () {
-      // eslint-disable-next-line
-      console.clear()
-      // eslint-disable-next-line
-      console.log('reiniciar')
       const self = this
       for (const item in self.posicoes) {
         let posicao = self.posicoes[item]
