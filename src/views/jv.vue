@@ -84,7 +84,8 @@ export default {
         // eslint-disable-next-line
         console.log(result && `${result} ganhou` || 'ninguem ganhou')
         self.alguemGanhou = result == vezDeJogar
-        if (!self.alguemGanhou) {
+        ninguemGanhou = !self.alguemGanhou
+        if (ninguemGanhou) {
           self.vezDe = vezDeJogar === 'X' ? 'O' : 'X'
         }
       }
