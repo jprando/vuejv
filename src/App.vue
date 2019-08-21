@@ -30,7 +30,7 @@ a {
   max-width: 370px;
   max-height: 480px;
   min-width: 370px;
-  min-height: 480px;
+  min-height: 540px;
   background-color: #eef;
 }
 </style>

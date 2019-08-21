@@ -3,7 +3,7 @@
     <jv-board v-model="posicoes" @jogar="jogarPartida"></jv-board>
     <div class="options">
       <button class="reset" @click="reiniciar">reiniciar</button>
-      <div>
+      <div style="margin-bottom: 10px">
         <h1>
           JOGADOR
           {{ vezDe }}
@@ -79,7 +79,14 @@ export default {
         let self = this
         pos.exibir = vezDeJogar
         const result = ganhador(self.jogada)
-        self.alguemGanhou = result == vezDeJogar
+        self.alguemGanhou = result.ganhou == vezDeJogar
+        if(self.alguemGanhou) {
+          if(result.ganhou){
+            result.posicaoVitoria.forEach(a => {
+              a.forEach(i => self.posicoes[i].ganhou = true)
+            })
+          }
+        }
         ninguemGanhou = !self.alguemGanhou
         if (ninguemGanhou) {
           self.vezDe = vezDeJogar === 'X' ? 'O' : 'X'
