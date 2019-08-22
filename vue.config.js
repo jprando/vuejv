@@ -15,6 +15,9 @@ module.exports = {
         upload: true,
         fail_build: true
       })
-    ]
+    ],
+    devServer: {
+        disableHostCheck: true
+    }
   }
 }
