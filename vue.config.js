@@ -1,7 +1,7 @@
 const PacktrackerPlugin = require('@packtracker/webpack-plugin')
 
 module.exports = {
-  publicPath: '/vuejv',
+  // publicPath: '/vuejv',
   outputDir: undefined,
   assetsDir: undefined,
   runtimeCompiler: undefined,
