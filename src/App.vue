@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <a href="https://github.com/jprando/vuejv">projeto no github</a>
+    <jv></jv>
+    <span> v0.082.72045 </span>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import jv from '@/views/jv'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+  name: 'app',
+  components: { jv }
 }
 </script>
 
 <style>
+a {
+  text-decoration: none;
+  color: gray;
+  position: relative;
+  top: -25px;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: Courier New, Courier, monospace;
+  float: left;
+  margin: 20px;
+  padding: 50px;
+  height: 480px;
+  width: 370px;
+  max-width: 370px;
+  max-height: 480px;
+  min-width: 370px;
+  min-height: 540px;
+  background-color: #eef;
 }
 </style>
