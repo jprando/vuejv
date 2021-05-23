@@ -1,5 +1,14 @@
+image:
+  file: .gitpod.Dockerfile
 tasks:
   - command: npm run serve -p 3000
 vscode:
   extensions:
+    - mikestead.dotenv
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
     - octref.vetur
+    - oderwat.indent-rainbow
+    - coenraads.bracket-pair-colorizer-2
+    - christian-kohler.path-intellisense
+    - davidanson.vscode-markdownlint
