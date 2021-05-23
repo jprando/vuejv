@@ -1,7 +1,7 @@
 tasks:
   - before: npm install -g npm
-    init: npm install -g eslint prettier @vue/cli
-    command: npm install
+  - init: npm install -g eslint prettier @vue/cli
+  - command: npm install
   - command: npm audit fix
   - command: npm run serve -- --port 3000
 ports:
