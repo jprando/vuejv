@@ -1,10 +1,12 @@
 tasks:
-  - before: npm install -g npm eslint prettier @vue/cli
-    init: npm install
-    command: npm audit fix
+  - before: npm install -g npm
+    init: npm install -g eslint prettier @vue/cli
+    command: npm install
+  - command: npm audit fix
   - command: npm run serve -- --port 3000
 ports:
   - port: 3000
+    visibility: public
     onOpen: open-preview
 vscode:
   extensions:

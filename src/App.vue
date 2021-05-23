@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <a href="https://github.com/jprando/vuejv">projeto no github</a>
+    <a href="https://github.com/jprando/vuejv">
+      projeto no github
+    </a>
     <jv></jv>
     <span> v0.082.72045 </span>
   </div>
@@ -8,6 +10,7 @@
 
 <script>
 import jv from '@/views/jv'
+//
 export default {
   name: 'app',
   components: { jv }
