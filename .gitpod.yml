@@ -1,7 +1,7 @@
-image:
-  file: .gitpod.Dockerfile
 tasks:
-  - command: npm run serve -p 3000
+  - before: npm install -g npm eslint prettier @vue/cli
+    init: npm install
+    command: npm run serve -p 3000
 vscode:
   extensions:
     - mikestead.dotenv
