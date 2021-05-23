@@ -1,0 +1,5 @@
+tasks:
+  - command: npm run serve -p 3000
+vscode:
+  extensions:
+    - octref.vetur
